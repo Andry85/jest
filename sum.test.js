@@ -143,3 +143,16 @@ test('forEach mock function', () => {
   // The return value of the first call to the function was 42
   expect(mockCallback.mock.results[0].value).toBe(42);
 });
+
+it('will check the matchers and pass', () => {
+  const user = {
+    createdAt: new Date(),
+    id: Math.floor(Math.random() * 20),
+    name: 'LeBron James',
+  };
+
+  expect(user).toMatchSnapshot({
+    createdAt: expect.any(Date),
+    id: expect.any(Number),
+  });
+});
